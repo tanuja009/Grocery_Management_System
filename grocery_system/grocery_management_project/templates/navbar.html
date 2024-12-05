@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block navbar %}
+<nav>
+    <div class="menu-icon">
+     <img src="https://marketplace.canva.com/EAFzje8Pffo/1/0/1600w/canva-colorful-illustrative-organic-grocery-online-shop-logo-Alka_dqR_gQ.jpg" alt="grocery"/>
+    </div>
+    <div class="logo">
+      
+    </div>
+    <div class="nav-items">
+      {% if user.is_authenticated %}
+      <li><a href="{% url 'home' %}">Home</a></li> 
+      <div class="dropdown">
+      <a href="#" class="nav-item">Category <i class="fa fa-caret-down"></i></a>
+      <div class="dropdown-content">
+         {% for i in categories %}
+         <li><a href="{% url 'read' i.id %}">{{ i.name }}</a></li>
+
+          {% endfor %}
+      </div>
+      </div>
+      <li ><a href="{% url 'About'%}">About Us</a></li>
+      <li><a href="#">Contact Us</a></li>
+      <li><a href="{% url 'profile' %}">User Profile</a></li>
+      {% comment %} <li><a href="{% url 'cart_view' %}">Cart</a></li> {% endcomment %}
+     <li> <a href="{% url 'logout_view'%}">Logout</a></li>
+
+   </div>
+   <div class="search-icon">
+      <span class="fas fa-search"></span>
+   </div>
+   <div class="cancel-icon">
+      <span class="fas fa-times"></span>
+   </div>
+   <form method="GET" action="{% url 'product_search' %}">
+      <input type="text" name="q" placeholder="Search products...">
+      <button type="submit">Search</button>
+  </form>
+  {% else %}
+
+  <ul style="display: flex; justify-content: space-between; align-items: center; list-style: none; padding: 0; margin: 0;">
+      <li><a href="{% url 'login' %}">Login</a></li>
+      <li><a href="{% url 'signup' %}">Sign Up</a></li>
+  </ul>
+  
+  
+  {% endif %}
+ </nav>
+{% endblock %}
+
+
+

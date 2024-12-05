@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content%}
+<div class="container" style="background-image=url("/static/myapp/images/background.jpg");">
+  <div class="d-flex justify-content-center align-items-center row">
+    <div class="col-12">
+  
+    </div>
+      <div class="p-3 bg-light border col-8">
+        <form method="POST" enctype="multipart/form-data" action="{% url 'addproduct' %}" class="border">
+          <h3 style="text-align:center">Add Product</h3>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Save</button>
+        </form>
+
+      </div>
+  </div>
+</div>
+{% endblock %}
+    
+  
+    
+    

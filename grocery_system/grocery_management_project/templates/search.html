@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 style="text-align:center">Search Results</h1>
+    {% if products %}
+        <ul>
+            {% for product in products %}
+            <div class="product-card" style="height:350px;width:250px;">
+                <img src="{{ product.image.url }}" alt="{{ product.product_name }}">
+                <div class="product-info">
+                   <a href="{% url 'product_details' product.id %}">
+    
+                    <p class="product-name">{{ product.product_name }}</p>
+                   </a>
+                    
+                    <p class="product-description">{{ product.description }}</p>
+                    <p class="product-price">${{ product.price }}</p> 
+                </div>
+               <a href="{% url 'Add_cart' product.id %}"><button type="submit" class="btn btn-primary">Add to Cart</button></a>
+            </div> 
+            {% endfor %}
+        </ul>
+{% else %}
+<p>No products found for "{{ query }}"</p>
+{% endif %}
+{% endblock content %}        
+    
+    

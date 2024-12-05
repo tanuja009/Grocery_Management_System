@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container pt-5">
+    <center><img src="{% static "my_app/images/image.gif" %}" alt="thanku"/ height="80px" width="80px" class="text-center"></center>
+<h2 style="background--color:grey;color:blue;text-align:center">
+    Thanku For Order
+   </h2>
+   <a href="{% url 'home'%}"><p class="text-center">visit again</p><a>
+</div>
+{% endblock content %}
+        
+       
+   

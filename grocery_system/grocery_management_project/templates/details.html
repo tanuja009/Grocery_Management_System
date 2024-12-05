@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="d-flex justify-content-center align-items-center">
+    <div style="height: 400px; width: 700px;" class="d-flex justify-content-around align-items-center pt-5">
+        <div style="height: 400px; width: 200px">
+    <h4 style="border-bottom:solid 1px black;text-align:center;color:green">{{ item.product_name }}</h4>
+    <center><img src="{{ item.image.url }}" alt="{{ product.product_name }}" style="height: 200px; width: 200px;border:none"></center>
+        </div>
+    <div style="height: 400px; width: 300px">
+        <strong>description:</strong><p style="text-align:center">{{ item.description }}</p>
+    <strong style="text-align:center">Price: ${{ item.price }}</strong>
+    <center>
+    <a href="{% url 'order_confirm' item.id %}" class="btn btn-success">Buy Now</a>
+    <a href="{% url 'Add_cart' item.id %}"><button type="submit" class="btn btn-primary">Add to Cart</button></a>
+    </center>
+</div>
+    </div> 
+</div>
+{% endblock content %}
+
+    
+

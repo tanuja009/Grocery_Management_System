@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Grocery Website{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'my_app/css/styles.css' %}">
+    <style>
+        .dropdown {
+           position: relative;
+           display: inline-block;
+       }
+       
+       .dropdown-content {
+           display: none;
+           position: absolute;
+           background-color: white;
+           min-width: 200px;
+           box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+           z-index: 1;
+           color: black;
+       }
+       
+       .dropdown-content a {
+           color: black;
+           padding: 12px 16px;
+           text-decoration: none;
+           display: block;
+       }  
+       
+       .dropdown-content a:hover {
+           background-color: #f1f1f1;
+       }
+       
+     .dropdown:hover .dropdown-content {
+           display: block;
+       }  
+       
+        .nav-item:hover {
+           color: #ddd;
+       } 
+       
+       </style>
+    {% block extra_head %}{% endblock %}
+</head> 
+<body>
+    <nav>
+        <div class="menu-icon">
+         <img src="https://marketplace.canva.com/EAFzje8Pffo/1/0/1600w/canva-colorful-illustrative-organic-grocery-online-shop-logo-Alka_dqR_gQ.jpg" alt="grocery"/>
+        </div>
+        <div class="logo" style="border-radius:50">
+          <img src="data:image/jpeg;base64,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" alt="Grocery Shop" style="height:50px;width:50px;border-radius:50%">
+        </div>
+        <div class="nav-items">
+           {% if user.is_authenticated %}
+           <li><a href="{% url 'home' %}">Home</a></li> 
+           <div class="dropdown">
+           <a href="#" class="nav-item">Category <i class="fa fa-caret-down"></i></a>
+           <div class="dropdown-content">
+              {% for i in categories %}
+              <li><a href="{% url 'read' i.id %}">{{ i.name }}</a></li>
+
+               {% endfor %}
+           </div>
+           </div>
+           <li ><a href="{% url 'About'%}">About Us</a></li>
+           <li><a href="#">Contact Us</a></li>
+           <li><a href="{% url 'profile' %}">User Profile</a></li>
+           <li><a href="{% url 'cart_view' %}">View Cart</a></li>
+           <li><a href="{% url 'order_list' %}">My Order</a></li>
+           {% comment %} <li><a href="{% url 'cart_view' %}">Cart</a></li> {% endcomment %}
+          <li> <a href="{% url 'logout_view'%}">Logout</a></li>
+
+        </div>
+        <div class="search-icon">
+           <span class="fas fa-search"></span>
+        </div>
+        <div class="cancel-icon">
+           <span class="fas fa-times"></span>
+        </div>
+        <form method="GET" action="{% url 'product_search' %}">
+           <input type="text" name="q" placeholder="Search products...">
+           <button type="submit">Search</button>
+       </form>
+       {% else %}
+   
+       <ul style="display: flex; justify-content: space-between; align-items: center; list-style: none; padding: 0; margin: 0;">
+           <li><a href="{% url 'login' %}">Login</a></li>
+           <li><a href="{% url 'signup' %}">Sign Up</a></li>
+       </ul>
+       
+       
+       {% endif %}
+       
+       </nav>
+    
+        {% block content %}
+        <!-- Default content if none is provided by child templates -->
+       
+        {% endblock %}
+    
+
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+    <script src="{% static 'my_app/js/script.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

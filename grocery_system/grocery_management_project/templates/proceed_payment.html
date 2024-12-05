@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+{% comment %} product show {% endcomment %}
+<div class="d-flex justify-content-center align-items-center">
+    <div style="height: 400px; width: 700px;" class="d-flex justify-content-around align-items-center pt-5">
+        <div style="height: 400px; width: 200px">
+            <p class="product-name">{{order.product.product_name }}</p>
+    <center><img src="{{ order.product.image.url }}" alt="{{ order.product.product_name }}" style="height: 200px; width: 200px;border:none"></center>
+            
+            </div>
+            <div style="height: 400px; width: 300px">
+            <strong>description:</strong><p class="product-description">{{ order.product.description }}</p>
+            <strong class="product-price">Price:{{ order.product.price }}rs</strong> <br>
+            <strong class="product-price">Shipping charge:{{ shipping_charge}}rs</strong> 
+            <strong class="product-price">Total_Price:{{ total_price }}rs</strong>
+            <center>
+                <form action="{% url 'payment' order.id  %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" id="checkout-button btn-success"  id="alertButton">Checkout</button>
+                  </form>    
+            </center>
+            
+            </div>
+    
+</div>
+    </div> 
+</div>
+{% endblock content %}
+{% block extra_js %}
+<script>
+    // Get the button element
+    const alertButton = document.getElementById('alertButton');
+   
+
+    // Add an event listener to the button
+    alertButton.addEventListener('click', function() {
+        // Show the alert popup
+        alert('Order Successfully');
+    });
+    
+</script>
+{% endblock extra_js %}
+
+
+
+
+
+     
+      
+     
+   
+    
+    

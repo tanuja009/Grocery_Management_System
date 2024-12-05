@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<center>
+    <h1>Your Cart</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Image</th>
+                
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <td>{{ item.product.product_name }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.product.price }}</td>
+                <td><img src="{{item.product.image.url}}" alt="{{item.product.product_name}}" height="50px" width="50px"></td>
+                <td>
+                    <a href="{% url 'deletecartitem' item.id %}" style="text-decoration:None;text-align:center;color:white;background-color:red;">Delete</a>
+                </td>        
+            </tr>
+        {% endfor %} 
+        </tbody>
+    </table>
+    <h2>Total:{{total_price}}</h2>
+    <center>    
+        <form action="{% url 'payment' id="null" %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" id="checkout-button btn-success">Proceed To Checkout</button>
+            
+
+          </form>  
+    </center><br>
+    <a href="{% url 'home'%}">Back To Home<a>
+{% endblock content %}
+
+
+
+
+    

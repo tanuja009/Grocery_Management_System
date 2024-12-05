@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="product-grid pt-5">
+    {% for product in data %}
+    <div class="product-card" style="height: 400px; width: 200px;">
+        <a href="{% url 'product_details' product.id %}">
+        <img src="{{ product.image.url }}" alt="{{ product.product_name }}" style="height: 200px; width: 200px;">
+        <div class="product-info">
+            <p class="product-name">{{ product.product_name }}</p>
+           
+            <p class="product-price">${{ product.price }}</p> 
+        </div>
+        <button type="submit" class="btn btn-primary">Add to Cart</button>
+    </div>
+    {% endfor %}
+</a>
+</div> 
+{% endblock content %}      
+ 
+      
+      
+
+   

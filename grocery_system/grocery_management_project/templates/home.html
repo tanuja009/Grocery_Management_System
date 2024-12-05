@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content%}
+
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true" data-ride="carousel" data-interval="3000">
+    <center>
+    <div class="carousel-inner">
+        {% for image in images %}
+        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+            <img src="{{ image }}" alt="Carousel Image" style="height:500px;width:100%">
+        </div>
+        {% endfor %}
+    </div>
+</center>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+
+
+<div class="product-grid pt-5">
+    {% for product in products %}
+    <div class="product-card" style="height:350px;width:250px;">
+        <a href="{% url 'product_details' product.id %}">
+        <img src="{{ product.image.url }}" alt="{{ product.product_name }}">
+        <div class="product-info">
+            <p class="product-name">{{ product.product_name }}</p>           
+            <p class="product-price">${{ product.price }}</p> 
+        </div>
+        <form method="post" action="{% url 'Add_cart' product.id %}">
+            {% csrf_token %}
+            <button type="submit">Add to Cart</button>
+        </form> 
+    </div>
+    {% endfor %}
+</a>
+</div>
+{% endblock %}

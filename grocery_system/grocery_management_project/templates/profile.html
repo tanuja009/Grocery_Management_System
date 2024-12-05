@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<center>
+    <div style="height:300px;width:400px;border:solid 1px black;margin:5px">
+        {% comment %} <h1 >{{profile}}</h1> {% endcomment %}
+        <div>
+            <div class="profile-details" style="text-align:center">
+                <p><strong>Name:</strong> {{ profile.username}}</p>
+                <p><strong>Email:</strong> {{ profile.email}}</p>    
+            </div>
+            
+            <div class="profile-actions">
+                <a href="{% url 'edit_profile' profile.id %}" class="btn btn-success">Edit Profile</a>
+                <a href="{% url 'Delete' profile.id %}" class="btn btn-danger">Delete Profile</a>
+            </div>
+        </div>
+    </div>
+</center>    
+{% endblock content %}
+   
+
+
+
+

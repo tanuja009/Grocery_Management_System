@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<h3 style="background-color:grey;text-align:center;color:blue">Your Orders</h3>
+{% if orders %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Product_name</th>
+        <th scope="col">Status</th>
+        <th scope="col">Date of Order</th>
+        <th scope="col">Image</th>
+        <th scope="col">price</th>
+        <th scope="col">product views</th>
+        <th scope="col">product Remove</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for order in orders %}
+        <tr>
+            <td>{{ order.id }}</td>
+            <td>{{ order.product.product_name }}</td>
+            <td style="color:red">{{ order.status }}</td>
+            <td>
+              {{ order.created_at|date:"d M Y, H:i" }}</td> 
+            <td>
+                <img src="{{ order.product.image.url }}" alt="{{ order.product.product_name }}" style="max-width: 100px; max-height: 100px;">
+            </td>
+            <td>{{ order.product.price }}</td> 
+            <td> <button type="submit">Order Cancle</button></td>
+            <td> <button type="submit">Delete</button></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+    <p>No orders found.</p>
+{% endif %}
+
+{% endblock content %}
+
+
+  
+      
+    

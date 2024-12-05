@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div>
+    <form action="{% url 'edit_profile'  profile.id %}" method="post">
+        {% csrf_token %} 
+        
+        <label for="username">Username</label>
+        <input type="text" value="{{ profile}}" name="username" id="username"><br><br>
+    
+       
+        <label for="email">Email</label>
+        <input type="email" value="{{ profile.email }}" id="email" name="email" readonly><br><br>
+    
+        <button type="submit">Submit</button>
+    </form>
+    
+</div>
+{% endblock content %}
+       
+
+
+   
